@@ -1,5 +1,4 @@
 import express from "express";
-import fetch from "node-fetch";
 import cors from "cors";
 
 const app = express();
@@ -61,9 +60,10 @@ app.get("/api/artist/:q", async (req, res) => {
     });
 
   } catch (e) {
+    console.error("API error:", e);
     res.status(500).json({ ok: false, error: e.message });
   }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Spotify proxy çalışıyor ${PORT}`));
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, () => console.log(`✅ Spotify proxy running on port ${PORT}`));
